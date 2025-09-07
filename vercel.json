@@ -3,7 +3,6 @@
   "buildCommand": "npm run build",
   "installCommand": "npm install",
   "outputDirectory": ".next",
-  "functions": {},
   "env": {
     "NEXT_TELEMETRY_DISABLED": "1"
   }
