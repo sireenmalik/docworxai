@@ -1,11 +1,5 @@
 {
   "buildCommand": "npm run build",
   "installCommand": "npm install",
-  "outputDirectory": "dist",
-  "env": {
-    "VITE_USER_POOL_ID": "us-west-2_7UwL0cxx8",
-    "VITE_USER_POOL_CLIENT_ID": "6lghjgq44s0vkr8glmkft5dngo",
-    "VITE_APPSYNC_URL": "https://frscfyygsbgujcetqltthfdbki.appsync-api.us-west-2.amazonaws.com/graphql",
-    "VITE_REGION": "us-west-2"
-  }
+  "outputDirectory": "dist"
 }
