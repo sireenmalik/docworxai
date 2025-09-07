@@ -1,4 +1,4 @@
-export const metadata = { title: "Use Cases — DocWorx AI" };
+export const metadata = { title: "Use Cases â€” DocWorx AI" };
 
 export default function UseCases() {
     const items = [
@@ -20,4 +20,5 @@ export default function UseCases() {
         </div>
     );
 }
+
 
