@@ -1,0 +1,74 @@
+openapi: 3.0.3
+info:
+  title: DocWorx AI Partner API
+  version: "1.0.0"
+  description: |
+    APIs to create claims, track status and receive webhooks.
+servers:
+  - url: https://api.docworx.ai
+paths:
+  /v1/claims:
+    post:
+      summary: Create a claim
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClaimCreateRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Claim'
+  /v1/webhooks:
+    post:
+      summary: Register a webhook endpoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookCreate'
+      responses:
+        '201':
+          description: Created
+components:
+  schemas:
+    ClaimCreateRequest:
+      type: object
+      required: [encounterId, diagnoses, procedures]
+      properties:
+        encounterId: { type: string }
+        diagnoses:
+          type: array
+          items:
+            type: object
+            properties:
+              code: { type: string, example: I25.10 }
+        procedures:
+          type: array
+          items:
+            type: object
+            properties:
+              code: { type: string, example: "93458" }
+              modifiers:
+                type: array
+                items: { type: string }
+        notes: { type: string }
+    Claim:
+      type: object
+      properties:
+        id: { type: string }
+        status: { type: string, enum: [CREATED, SUBMITTED, PAID, DENIED] }
+    WebhookCreate:
+      type: object
+      properties:
+        url: { type: string, format: uri }
+        events:
+          type: array
+          items:
+            type: string
+            enum: [encounter.created, claim.submitted, payment.posted]
